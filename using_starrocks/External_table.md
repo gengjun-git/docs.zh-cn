@@ -335,6 +335,6 @@ select count(*) from profile_wos_p7;
 
 * hive的partition信息以及partition对应的文件信息都会缓存在starrocks中，缓存的刷新时间为hive_meta_cache_refresh_interval_s，默认7200，缓存的失效时间为hive_meta_cache_ttl_s，默认86400。
 
-* 也可以手动刷新元数据信息
+* 可以手动刷新元数据信息
   1. hive中新增，或者删除分区时，刷新表的元数据信息: `REFRESH EXTERNAL TABLE hive_t`，其中hive_t是starrocks中的外表名称
   2. hive中向某些partition中新增数据时，指定partition进行刷新：`REFRESH EXTERNAL TABLE hive_t PARTITION ('date_id=01', 'date_id=02')`，其中hive_t是starrocks中的外表名称，'date_id=01'、 'date_id=02'是hive中的partition名称
