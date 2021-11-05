@@ -647,13 +647,13 @@ BE、FE启动顺序不能颠倒。因为如果升级导致新旧 FE、BE 不兼�
         * 下载源码patch
 
         ```bash
-            wget "http://starrocks-public.oss-cn-zhangjiakou.aliyuncs.com/upgrade_from_apache_0.13.15.patch"
+        wget "http://starrocks-public.oss-cn-zhangjiakou.aliyuncs.com/upgrade_from_apache_0.13.15.patch"
         ```
 
         * git命令合入patch
 
         ```bash
-            git apply --reject upgrade_from_apache_0.13.15.patch
+        git apply --reject upgrade_from_apache_0.13.15.patch
         ```
 
         * 如果本地代码没有在git环境中，也可以根据patch的内容手动合入。
@@ -661,7 +661,7 @@ BE、FE启动顺序不能颠倒。因为如果升级导致新旧 FE、BE 不兼�
         * 编译fe模块
 
         ```bash
-            ./build.sh --fe --clean
+        ./build.sh --fe --clean
         ```
 
     * 登录集群，确定Master和Follower，如果IsMaster为true，代表是Master。其他的都是Follower/Observer。
