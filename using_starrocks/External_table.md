@@ -367,7 +367,7 @@ select count(*) from profile_wos_p7;
 
 * 也可以手动刷新元数据信息：
   1. hive中新增或者删除分区时，可以刷新**表**的元数据信息：`REFRESH EXTERNAL TABLE hive_t`，其中hive_t是starrocks中的外表名称。
-  2. hive中向某些partition中新增数据时，可以**指定partition**进行刷新：`REFRESH EXTERNAL TABLE hive_t PARTITION ('date_id=01', 'date_id=02')`，其中hive_t是starrocks中的外表名称，'date_id=01'、 'date_id=02'是hive中的partition名称。
+  2. hive中向某些partition中新增数据时，可以**指定partition**进行刷新：`REFRESH EXTERNAL TABLE hive_t PARTITION ('k1=01/k2=02', 'k1=03/k2=04')`，其中hive_t是starrocks中的外表名称，'k1=01/k2=02'、 'k1=03/k2=04'是hive中的partition名称。
 
 ## StarRocks外部表
 
