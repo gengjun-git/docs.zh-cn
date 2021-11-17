@@ -332,6 +332,34 @@ select count(*) from profile_wos_p7;
   2. 把hadoop集群中的hive-site.xml/core-site.xml/hdfs-site.xml放到fe/conf下，把core-site.xml/hdfs-site.xml放到be/conf下。
   3. 在fe/conf/fe.conf文件中的JAVA_OPTS/JAVA_OPTS_FOR_JDK_9选项加上 -Djava.security.krb5.conf:/etc/krb5.conf，/etc/krb5.conf是krb5.conf文件的路径，可以根据自己的系统调整。
   4. resource中的uri地址一定要使用域名，并且相应的hive和hdfs的域名与ip的映射都需要配置到/etc/hosts中。
+* S3 支持:
+  在fe/conf/core-site.xml和be/conf/core-site.xml中加入如下配置即可
+
+~~~xml
+<configuration>
+   <property>
+      <name>fs.s3a.access.key</name>
+      <value>******</value>
+   </property>
+   <property>
+      <name>fs.s3a.secret.key</name>
+      <value>******</value>
+   </property>
+   <property>
+      <name>fs.s3a.endpoint</name>
+      <value>s3.us-west-2.amazonaws.com</value>
+   </property>
+   <property>
+     <name>fs.s3a.connection.maximum</name>
+     <value>500</value>
+   </property>
+</configuration>
+~~~
+
+  1. `fs.s3a.access.key` 指定aws的access key id
+  2. `fs.s3a.secret.key` 指定aws的secret access key
+  3. `fs.s3a.endpoint` 指定aws的区域
+  4. `fs.s3a.connection.maximum` 配置最大链接数，如果查询过程中有报错`Timeout waiting for connection from poll`，可以适当调高该参数
 
 ### 缓存更新
 
