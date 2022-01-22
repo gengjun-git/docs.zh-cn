@@ -149,13 +149,13 @@ FROM data_source
 
         json_root为合法的jsonpath字符串，用于指定json document的根节点，默认值为""。
 
-    10. `data_source`
+5. `data_source`
 
-        数据源的类型。当前支持：
+    数据源的类型。当前支持：
 
-        KAFKA
+    KAFKA
 
-5. `data_source_properties`
+6. `data_source_properties`
 
     指定数据源相关的信息。
 
