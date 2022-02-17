@@ -16,11 +16,11 @@ FROM data_source
 [data_source_properties]
 ```
 
-1. `[db.]job_name`
+1. **[db.]job_name**
 
     指定要修改的作业名称。
 
-2. `load_properties`
+2. **load_properties**
 
     用于描述导入数据。语法：
 
@@ -31,7 +31,7 @@ FROM data_source
     [partitions]
     ```
 
-    1. `column_separator`:
+    1. **column_separator**:
 
         指定列分隔符，如：
 
@@ -41,7 +41,7 @@ FROM data_source
 
         默认为：\t
 
-    2. `columns_mapping`:
+    2. **columns_mapping**:
 
         指定源数据中列的映射关系，以及定义衍生列的生成方式。
 
@@ -58,33 +58,33 @@ FROM data_source
 
         2. 衍生列：
 
-            ```plain text
             以 col_name = expr 的形式表示的列，我们称为衍生列。即支持通过 expr 计算得出目的表中对应列的值。
             衍生列通常排列在映射列之后，虽然这不是强制的规定，但是 StarRocks 总是先解析映射列，再解析衍生列。
             接上一个示例，假设目的表还有第4列 v2，v2 由 k1 和 k2 的和产生。则可以书写如下：
 
+            ```plain text
             COLUMNS (k2, k1, xxx, v1, v2 = k1 + k2);
             ```
 
-    3. `where_predicates`
+    3. **where_predicates**
 
-        ```plain text
         用于指定过滤条件，以过滤掉不需要的列。过滤列可以是映射列或衍生列。
         例如我们只希望导入 k1 大于 100 并且 k2 等于 1000 的列，则书写如下：
 
+        ```plain text
         WHERE k1 > 100 and k2 = 1000
         ```
 
-    4. `partitions`
+    4. **partitions**
 
-        ```plain text
         指定导入目的表的哪些 partition 中。如果不指定，则会自动导入到对应的 partition 中。
         示例：
 
+        ```plain text
         PARTITION(p1, p2, p3)
         ```
 
-3. `job_properties`
+3. **job_properties**
 
     指定需要修改的作业参数。目前仅支持如下参数的修改：
 
@@ -99,13 +99,13 @@ FROM data_source
     9. `strict_mode`
     10. `timezone`
 
-4. `data_source`
+4. **data_source**
 
     数据源的类型。当前支持：
 
     KAFKA
 
-5. `data_source_properties`
+5. **data_source_properties**
 
     数据源的相关属性。目前仅支持：
     1. `kafka_partitions`

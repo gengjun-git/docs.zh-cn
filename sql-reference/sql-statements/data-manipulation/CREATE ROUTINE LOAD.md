@@ -15,15 +15,15 @@ FROM data_source
 [data_source_properties]
 ```
 
-1. `[db.]job_name`
+1. **[db.]job_name**
 
     导入作业的名称，在同一个 database 内，相同名称只能有一个 job 在运行。
 
-2. `tbl_name`
+2. **tbl_name**
 
     指定需要导入的表的名称。
 
-3. `load_properties`
+3. **load_properties**
 
     用于描述导入数据。语法：
 
@@ -34,7 +34,7 @@ FROM data_source
     [partitions]
     ```
 
-    1. `column_separator`:
+    1. **column_separator**:
 
         指定列分隔符，如：
 
@@ -44,7 +44,7 @@ FROM data_source
 
         默认为：\t
 
-    2. `columns_mapping`:
+    2. **columns_mapping**:
 
         指定源数据中列的映射关系，以及定义衍生列的生成方式。
 
@@ -69,7 +69,7 @@ FROM data_source
             COLUMNS (k2, k1, xxx, v1, v2 = k1 + k2);
             ```
 
-    3. `where_predicates`
+    3. **where_predicates**
 
         ```plain text
         用于指定过滤条件，以过滤掉不需要的列。过滤列可以是映射列或衍生列。
@@ -78,7 +78,7 @@ FROM data_source
         WHERE k1 > 100 and k2 = 1000
         ```
 
-    4. `partitions`
+    4. **partitions**
 
         ```plain text
         指定导入目的表的哪些 partition 中。如果不指定，则会自动导入到对应的 partition 中。
@@ -87,7 +87,7 @@ FROM data_source
         PARTITION(p1, p2, p3)
         ```
 
-4. `job_properties`
+4. **job_properties**
 
     用于指定例行导入作业的通用参数。
 
@@ -149,13 +149,13 @@ FROM data_source
 
         json_root为合法的jsonpath字符串，用于指定json document的根节点，默认值为""。
 
-5. `data_source`
+5. **data_source**
 
     数据源的类型。当前支持：
 
     KAFKA
 
-6. `data_source_properties`
+6. **data_source_properties**
 
     指定数据源相关的信息。
 
