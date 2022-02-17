@@ -25,15 +25,18 @@ FROM data_source
     用于描述导入数据。语法：
 
     ```sql
-    [column_separator],
-    [columns_mapping],
-    [where_predicates],
-    [partitions]
+    [COLUMNS TERMINATED BY '<terminator>'],
+    [COLUMNS ([<column_name> [, ...] ] [, column_assignment [, ...] ] )],
+    [WHERE <expr>],
+    [PARTITION ([ <partition_name> [, ...] ])]
+
+    column_assignment:
+    <column_name> = column_expression
     ```
 
-    1. **column_separator**:
+    1. 设置列分隔符
 
-        指定列分隔符，如：
+        对于csv格式的数据，可以指定列分隔符，例如，将列分隔符指定为逗号(,)
 
         ```sql
         COLUMNS TERMINATED BY ","
@@ -41,7 +44,7 @@ FROM data_source
 
         默认为：\t
 
-    2. **columns_mapping**:
+    2. 指定列映射关系
 
         指定源数据中列的映射关系，以及定义衍生列的生成方式。
 
@@ -66,7 +69,9 @@ FROM data_source
             COLUMNS (k2, k1, xxx, v1, v2 = k1 + k2);
             ```
 
-    3. **where_predicates**
+        对于csv格式的数据，COLUMNS中的映射列的个数必须要与数据中的列个数一致
+
+    3. 指定过滤条件
 
         用于指定过滤条件，以过滤掉不需要的列。过滤列可以是映射列或衍生列。
         例如我们只希望导入 k1 大于 100 并且 k2 等于 1000 的列，则书写如下：
@@ -75,7 +80,7 @@ FROM data_source
         WHERE k1 > 100 and k2 = 1000
         ```
 
-    4. **partitions**
+    4. 指定导入分区
 
         指定导入目的表的哪些 partition 中。如果不指定，则会自动导入到对应的 partition 中。
         示例：
