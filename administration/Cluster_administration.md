@@ -213,13 +213,7 @@ admin set frontend config ("disable_colocate_balance"="false");
     sh bin/stop_be.sh
     ```
 
-2. 替换 BE 节点相关文件。
-
-    > 注意
-    >
-    > BE 节点小版本升级中（例如从 2.0.x 升级到 2.0.y），您只需升级 **/lib/starrocks_be**。而大版本升级中（例如从 2.0.x 升级到 2.x.x），您需要替换 BE 节点路径下的 **bin** 和 **lib** 文件夹。
-
-    以下示例以大版本升级为例。
+2. 替换 BE 节点路径下的 **bin** 和 **lib** 文件夹。
 
     ```shell
     mv lib lib.bak 
@@ -273,13 +267,7 @@ admin set frontend config ("disable_colocate_balance"="false");
     sh bin/stop_fe.sh
     ```
 
-2. 替换 FE 相关文件。
-
-    > **注意**
-    >
-    > FE 节点小版本升级中（例如从 2.0.x 升级到 2.0.y），您只需升级 **/lib/starrocks-fe.jar**。而大版本升级中（例如从 2.0.x 升级到 2.x.x），您需要替换 FE 节点路径下的 **bin**、**lib** 和 **spark-dpp** 文件夹。
-
-    以下示例以大版本升级为例。
+2. 替换 FE 节点路径下的 **bin**、**lib** 和 **spark-dpp** 文件夹。
 
     ```shell
     mv lib lib.bak 
